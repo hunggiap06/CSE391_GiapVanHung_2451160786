@@ -11,7 +11,7 @@
      - Bước 6: Parse HTML -> Dom/CSSOM
      - Bước 7: Render layout & paint
 
-![alt text](181543.png)
+![Ảnh chụp màn hình tab network](./screenshots/Cau1_A1.png)
 
 ### Câu A2
 >Tài liệu tham chiếu:`tuan_1_html5/04_visible_part_html.md`
@@ -35,4 +35,29 @@
  ### Câu A3
  > Tài liệu tham chiếu
  
+┌─────────────────────────────┐
+│         Hộp 1 (div)         │  + `<div>`:  block,full width
+└─────────────────────────────┘
+ Text A │ Text B                 + inline: cùng dòng
+┌─────────────────────────────┐
+│         Hộp 2 (div)         │  + `<div>`: block,xuống dòng mới
+└─────────────────────────────┘
+ Text C │ Text D                 + `<span>` và strong đều inline, Text D in đậm
+┌─────────────────────────────┐
+│         Hộp 3 (div)         │  + `<div>`: block,dòng riêng
+└─────────────────────────────┘
 
+### Câu A4
+>Tài liệu tham chiếu: `tuan_1_html5/05_tables_hyperlinks.md`
+
+- `<thead></thead>` (phần đầu của bảng): tiêu đề cột, dùng<th>, in đậm, screen reader đọc trước
+- `<tbody></tbody>`: (Phần thân bảng): dữ liệu chính- có nhiều `<tbody>`trong 1 bảng
+- `<tfoot>`: (Phần cuối bảng): Tổng kết , trình duyệt render sau cùng 
+
+** Tại sao không nên dùng table để layout **
+1. Sai ngữ nghĩa(semantic)
+  - `<table></table>`: Sinh ra để chứa dữ liệu bảng ,Không phải để sắp xếp giao diện
+2. Cứng ngắt ,không responsive 
+- Table mặc định có chiều rộng cố định theo nội dung. Trên màn hình điện thoại, layout table vỡ hoặc tràn ngang — rất khó fix.
+3. Code rất khó để bảo trì
+- Để layout bằng table, bạn phải lồng `<table>` trong `<table>` (nested tables). Thêm một cột = sửa hàng chục dòng HTML. CSS Grid làm điều tương tự chỉ với vài dòng CSS, dễ đọc và dễ sửa hơn nhiều.
