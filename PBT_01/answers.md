@@ -10,7 +10,7 @@
      - Bước 5: Server response 
      - Bước 6: Parse HTML -> Dom/CSSOM
      - Bước 7: Render layout & paint
-
+     
 ![Ảnh chụp màn hình tab network](./screenshots/Cau1_A1.png)
 
 ### Câu A2
@@ -34,7 +34,6 @@
 
  ### Câu A3
  > Tài liệu tham chiếu
- 
 ┌─────────────────────────────┐
 │         Hộp 1 (div)         │  + `<div>`:  block,full width
 └─────────────────────────────┘
@@ -61,3 +60,4 @@
 - Table mặc định có chiều rộng cố định theo nội dung. Trên màn hình điện thoại, layout table vỡ hoặc tràn ngang — rất khó fix.
 3. Code rất khó để bảo trì
 - Để layout bằng table, bạn phải lồng `<table>` trong `<table>` (nested tables). Thêm một cột = sửa hàng chục dòng HTML. CSS Grid làm điều tương tự chỉ với vài dòng CSS, dễ đọc và dễ sửa hơn nhiều.
+ 
