@@ -61,3 +61,39 @@
 3. Code rất khó để bảo trì
 - Để layout bằng table, bạn phải lồng `<table>` trong `<table>` (nested tables). Thêm một cột = sửa hàng chục dòng HTML. CSS Grid làm điều tương tự chỉ với vài dòng CSS, dễ đọc và dễ sửa hơn nhiều.
  
+## Phần B
+### Liệt kê lỗi của bài B3
+Lỗi 1: Dòng 1 — <!DOCTYPE> sai chuẩn — Sửa thành `<!DOCTYPE html> `
+Lỗi 2: Dòng 3 — Thiếu đóng thẻ `<title>` — Thêm `</title>`  
+Lỗi 3: Dòng 4 — charset viết sai "utf8" — Sửa thành "UTF-8"  
+Lỗi 4: Thiếu meta viewport — Thêm:  
+`<meta name="viewport" content="width=device-width, initial-scale=1.0">`  
+Lỗi 5: Dòng 8 — `<h1>` không đóng đúng — Sửa thành `<h1>...</h1>`
+Lỗi 6: Dòng 12 — Thẻ `<a>` không đóng — Sửa thành `</a>`  
+Lỗi 7: href="home" sai semantic link nội bộ — Sửa thành href="#home"  
+Lỗi 8: Dòng 19 — `<img>` thiếu dấu ngoặc kép và alt — Sửa:  
+`<img src="iphone.jpg" alt="iPhone 16 Pro">`  
+Lỗi 9: Dòng 21 — Sai thứ tự đóng thẻ ```<b>``` — Sửa thành:  
+`<strong>25.990.000đ</strong>`  
+Lỗi 10: Không dùng thẻ semantic cho ảnh — Bọc bằng:  
+`<figure> + <figcaption>`
+Lỗi 11: Bảng thiếu `<thead>` và `<tbody>` — Thêm vào  
+Lỗi 12: Dùng `<td>` thay vì `<th>` cho header — Sửa thành <th>  
+Lỗi 13: Có 2 thẻ `<main` — Sai semantic — Đổi cái thứ 2 thành `<aside>`  
+Lỗi 14: Dòng cuối — `<p>` không đóng — Thêm `</p>`  
+Lỗi 15: Thiếu thuộc tính lang trong` <html>` — Thêm lang="vi"
+
+### Bài B4: Phân tích Shopee.com
+1. 
+Thẻ Senmatic header
+![Thẻ header](screenshots\theSemanticHeader.png.png)
+
+Thẻ Senmatic section
+![Thẻ section](screenshots\TheSemanticSection.png.png)
+
+Thẻ Senmatic footer
+![Thẻ footer](screenshots\TheSemanticFooter.png.png)
+
+2. 
+Thẻ form 
+![Thẻ form](screenshots\TheForm.png.png)
