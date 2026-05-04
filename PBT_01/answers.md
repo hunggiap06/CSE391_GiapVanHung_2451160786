@@ -271,3 +271,6 @@ Yêu cầu: Viết chỉ phần cấu trúc HTML (không cần nội dung thật
 - Tuy nhiên, div vẫn có vai trò riêng. Nó phù hợp khi cần nhóm các phần tử để phục vụ cho việc layout hoặc styling bằng CSS, đặc biệt khi không có thẻ semantic nào mô tả chính xác mục đích đó.
 
 - Tóm lại, semantic HTML không phải là tốn thời gian mà là cách viết code rõ ràng, dễ hiểu và thân thiện hơn với cả công cụ tìm kiếm lẫn người dùng.
+
+Link video: 
+# Link video thuyết trình của phần D:https://drive.google.com/file/d/18u9hGzeRzkrSzM8MmZ1ZqhgFd8eu5kPw/view?usp=drive_link
