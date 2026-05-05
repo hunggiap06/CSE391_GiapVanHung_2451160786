@@ -185,3 +185,162 @@ Nó không thể so sánh giá trị giữa hai input khác nhau
 (password và confirm password).
 - Việc kiểm tra hai mật khẩu trùng nhau cần JavaScript
 hoặc validation phía server.
+
+## Phần C
+### Câu C1 — Debug Form
+
+Lỗi 1: Dòng 2 — Input "Tên" không có ```<label for="...">```, vi phạm accessibility  
+Sửa:
+```html
+<label for="name">Tên:</label>
+<input type="text" id="name" name="name" required>
+```
+
+
+Lỗi 2: Dòng 4 — Input email thiếu label và name, chỉ dùng placeholder (không tốt cho accessibility)  
+Sửa:
+```html
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" required>
+```
+
+
+Lỗi 3: Dòng 6–7 — Hai input password không có label và không phân biệt rõ ràng  
+Sửa:
+```html
+<label for="password">Mật khẩu:</label>
+<input type="password" id="password" name="password" required>
+
+<label for="confirm-password">Nhập lại mật khẩu:</label>
+<input type="password" id="confirm-password" name="confirm_password" required>
+```
+
+
+Lỗi 4: Dòng 9 — Input "Phone" dùng type="text" không đúng semantic  
+Sửa:
+```html
+<label for="phone">Phone:</label>
+<input type="tel" id="phone" name="phone" required>
+```
+
+
+Lỗi 5: Dòng 9 — Không nên dùng value cố định cho số điện thoại  
+Sửa:
+```html
+<input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
+```
+
+
+Lỗi 6: Dòng 11 — ```<select>``` không có label  
+Sửa:
+```html
+<label for="city">Thành phố:</label>
+<select id="city" name="city" required>
+    <option value="">--Chọn--</option>
+    <option value="hn">Hà Nội</option>
+    <option value="hcm">TP.HCM</option>
+</select>
+```
+
+
+Lỗi 7: Dòng 16 — Checkbox "đồng ý điều khoản" thiếu input checkbox  
+Sửa:
+```html
+<input type="checkbox" id="terms" name="terms" required>
+<label for="terms">Tôi đồng ý điều khoản</label>
+```
+
+
+Lỗi 8: Dòng 19 — ```<form>``` thiếu action và method (best practice)  
+Sửa:
+```html
+<form action="/submit" method="post">
+```
+
+
+Form hoàn chỉnh sau khi sửa:
+
+```html
+<form action="/submit" method="post">
+    <label for="name">Tên:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Mật khẩu:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="confirm-password">Nhập lại mật khẩu:</label>
+    <input type="password" id="confirm-password" name="confirm_password" required>
+
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
+
+    <label for="city">Thành phố:</label>
+    <select id="city" name="city" required>
+        <option value="">--Chọn--</option>
+        <option value="hn">Hà Nội</option>
+        <option value="hcm">TP.HCM</option>
+    </select>
+
+    <input type="checkbox" id="terms" name="terms" required>
+    <label for="terms">Tôi đồng ý điều khoản</label>
+
+    <input type="submit" value="Gửi">
+</form>
+```
+
+## Câu C2 — Thiết kế chiến lược Validation
+
+1. Pattern regex
+
+CMND/CCCD (đúng 12 chữ số):
+```html
+<input type="text" name="cccd" pattern="^\d{12}$" required>
+```
+
+Số tài khoản (10–15 chữ số):
+```html
+<input type="text" name="account" pattern="^\d{10,15}$" required>
+```
+
+Email:
+```html
+<input type="email" name="email" required>
+```
+
+PIN (6 chữ số, không hiển thị):
+```html
+<input type="password" name="pin" pattern="^\d{6}$" required>
+```
+2. HTML5 validation có đủ an toàn cho ứng dụng ngân hàng không?
+- Không đủ an toàn.
+
+- Giải thích:
+  - HTML5 validation chỉ hoạt động trên trình duyệt phía người dùng nên không thể đảm bảo dữ liệu gửi lên là hợp lệ.
+
+  - Người dùng hoặc kẻ tấn công có thể:
+
+  - vô hiệu hóa validation của trình duyệt,
+chỉnh sửa mã HTML bằng Developer Tools,
+hoặc gửi request trực tiếp tới server mà không đi qua form.
+
+  - Vì vậy, HTML5 validation chỉ giúp cải thiện trải nghiệm nhập liệu, chứ không phải cơ chế bảo mật cho hệ thống ngân hàng.
+=> Hệ thống cần kiểm tra lại dữ liệu ở backend trước khi xử lý.
+
+3. Ba loại validation HTML5 không thực hiện được (cần JavaScript)
+- Kiểm tra sự liên quan giữa nhiều input
+Ví dụ: mật khẩu nhập lại phải trùng với mật khẩu ban đầu.
+- Xác thực dữ liệu với hệ thống
+Ví dụ: kiểm tra số CCCD hoặc email đã tồn tại trong database chưa.
+- Validation phụ thuộc điều kiện lựa chọn
+Ví dụ: chọn loại tài khoản doanh nghiệp thì phải nhập thêm mã số thuế.
+4. Hai rủi ro bảo mật nếu chỉ kiểm tra ở frontend
+- Nhận dữ liệu nguy hiểm hoặc sai cấu trúc
+Người dùng có thể chèn mã độc hoặc dữ liệu bất thường gây lỗi hệ thống hoặc tấn công XSS.
+- Bỏ qua toàn bộ bước kiểm tra form
+Hacker gửi request trực tiếp đến server với thông tin giả → có thể làm sai lệch dữ liệu hoặc khai thác lỗ hổng bảo mật.
+
+=> Kết luận: Validation phía client chỉ mang tính hỗ trợ, còn việc kiểm tra cuối cùng luôn phải thực hiện ở server-side.
+
