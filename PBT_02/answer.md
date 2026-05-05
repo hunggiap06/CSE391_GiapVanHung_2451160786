@@ -122,3 +122,66 @@ OGG (ít phổ biến hơn nhưng vẫn được hỗ trợ)
     ```<img src="iphone16.jpg" alt="iPhone 16 màu đen, thiết kế hiện đại với camera kép">```
     ```<img src="decor.png" alt="trang trí phòng">```
     ```<img src="chart.png" alt="Biểu đồ doanh thu quý 1 năm 2026 tăng dần từ tháng 1 đến tháng 3">```
+### Câu A5
+***Cách 1 — dùng <img>***
+`<img src="product.jpg" alt="iPhone">`
+
+- Dùng <img> đơn lẻ khi:
+
+  - Ảnh chỉ mang tính minh họa
+  - Không cần chú thích riêng
+  - Nội dung ảnh đã được mô tả trong text xung quanh
+- Ví dụ 1: Logo website
+
+```
+  <header>
+    <img src="logo.png" alt="Logo cửa hàng">
+  </header> ```
+
+→ Logo chỉ để nhận diện thương hiệu.
+- Ví dụ 2 — Icon minh họa bài viết
+```
+```
+<p>
+    <img src="icon-check.png" alt="check"> Thanh toán nhanh chóng
+</p>
+```
+→ Ảnh chỉ hỗ trợ nội dung văn bản.
+
+***Cách 2 — dùng `<figure> `+ `<figcaption>`***
+```
+<figure>
+    <img src="product.jpg" alt="iPhone 16 Pro Max 256GB Titan">
+    <figcaption>iPhone 16 Pro Max — 25.990.000đ</figcaption>
+</figure>
+```
+Dùng `<figure>` khi:
+
+Ảnh là nội dung quan trọng
+Cần chú thích riêng
+Ảnh + caption tạo thành một khối nội dung độc lập
+Có thể được tham chiếu trong bài viết (Hình 1, Hình 2…)
+
+- Ví dụ 1 — Sản phẩm bán hàng
+```
+<figure>
+    <img src="laptop.jpg" alt="MacBook Air M3">
+    <figcaption>MacBook Air M3 — 28.990.000đ</figcaption>
+</figure>
+```
+- Ví dụ 2 — Ảnh minh họa trong blog
+```
+<figure>
+    <img src="sunset.jpg" alt="Hoàng hôn Đà Nẵng">
+    <figcaption>Hình 1: Hoàng hôn tại biển Mỹ Khê</figcaption>
+</figure>
+```
+
+## Phần B
+### Câu B1
+***Tại sao HTML không validate confirm password ?***
+- HTML chỉ kiểm tra giá trị của từng input riêng lẻ.
+Nó không thể so sánh giá trị giữa hai input khác nhau
+(password và confirm password).
+- Việc kiểm tra hai mật khẩu trùng nhau cần JavaScript
+hoặc validation phía server.
