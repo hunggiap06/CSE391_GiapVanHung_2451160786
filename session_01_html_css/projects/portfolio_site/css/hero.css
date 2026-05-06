@@ -1,0 +1,59 @@
+/* ===== HERO ===== */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 20px;
+
+    background: linear-gradient(
+        135deg,
+        var(--color-primary),
+        var(--color-secondary)
+    );
+
+    color: white;
+}
+
+/* TITLE */
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+/* SUBTITLE */
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+}
+
+/* CTA BUTTON */
+.cta-button {
+    background: white;
+    color: var(--color-primary);
+
+    padding: 14px 28px;
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+/* Hover effect */
+.cta-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* MOBILE */
+@media (max-width:768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
