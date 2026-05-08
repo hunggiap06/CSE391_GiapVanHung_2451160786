@@ -35,3 +35,13 @@
     );
     transition: width 1s ease-out;
 }
+@media (max-width:768px) {
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-section {
+        padding: 60px 15px;
+    }
+}
