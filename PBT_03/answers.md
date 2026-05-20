@@ -126,7 +126,6 @@ Khoảng cách giữa box-a với box-b là 30px bởi vì có margin âm
 
 Xét element:
 
-```html
 <p class="price" id="main-price"></p>
 1. Tính Specificity cho từng rule
 
@@ -186,3 +185,129 @@ p { color: black !important; }
 → Rule A ghi đè các rule còn lại.
 
 → Màu hiển thị: black
+
+## Bài B1: Liệt kê selector đã dùng trong file profile.html
+**Các loại selector đã sử dụng**
+
+1. Element selector
+- body
+- table
+- footer
+
+2. ID selector
+- #main-header
+
+3. Class selector
+- .profile-section
+- .active
+
+4. Descendant selector
+- nav a
+
+5. Pseudo-class selector
+- a:hover
+- tr:nth-child(even)
+- tr:hover
+## Bài B2 — Box Model Lab
+
+---
+
+## Phần 1 — Content-box vs Border-box
+
+### Hộp 1 (content-box)
+
+- Width khai báo: **300px**
+- Padding: **20px × 2 = 40px**
+- Border: **5px × 2 = 10px**
+
+👉 **Chiều rộng thực tế:**
+
+300 + 40 + 10 = **350px**
+
+![Content Box](./screenshots/contentbox.png)
+
+---
+
+### Hộp 2 (border-box)
+
+👉 **Chiều rộng thực tế:**
+
+**300px**
+
+Vì padding và border đã được tính bên trong thuộc tính `width`.
+
+![Border Box](./screenshots/borderbox.png)
+
+---
+
+### Giải thích sự khác biệt
+
+**content-box**
+
+- `width` chỉ tính phần **content**
+- Padding và border được cộng thêm vào kích thước thật
+- Làm layout dễ bị tràn
+
+**border-box**
+
+- `width` bao gồm **content + padding + border**
+- Kích thước thật luôn đúng bằng width khai báo
+- Giúp layout dễ kiểm soát hơn
+
+---
+
+## Phần 2 — Layout 3 cột
+
+### Không dùng border-box
+
+Tổng chiều rộng thực tế:
+
+- Sidebar: 250 + 30 + 4 = **284px**
+- Content: 500 + 40 + 4 = **544px**
+- Ads: 250 + 30 + 4 = **284px**
+
+👉 Tổng:
+
+284 + 544 + 284 = **1112px**
+
+➡ Vượt quá container **1000px** → Layout bị tràn.
+
+![Không dùng border-box](./screenshots/Screenshot 2026-05-20 131707.png)
+
+---
+
+### Có dùng border-box
+
+Tổng chiều rộng:
+
+250 + 500 + 250 = **1000px**
+
+➡ Vừa đúng container.
+
+![Có dùng border-box](./screenshots/codungborderbox.png)
+
+---
+
+## Bài B3 — CSS Specificity
+
+### 10 Rules + Specificity Score
+
+1. `p` → **0,0,1**
+2. `.text` → **0,1,0**
+3. `.highlight` → **0,1,0**
+4. `p.text` → **0,1,1**
+5. `p.highlight` → **0,1,1**
+6. `.text.highlight` → **0,2,0**
+7. `#demo` → **1,0,0**
+8. `p#demo` → **1,0,1**
+9. `#demo.text` → **1,1,0**
+10. `p#demo.text.highlight` → **1,2,1**
+
+---
+
+## Element cuối cùng hiển thị màu gì?
+
+👉 **Màu hiển thị cuối cùng: `gold`**
+
+Vì selector:
+

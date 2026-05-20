@@ -1,0 +1,81 @@
+/* ===== 1. BORDER BOX RESET ===== */
+* {
+    box-sizing: border-box;
+}
+
+/* ===== 2. BODY TYPOGRAPHY ===== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ===== 3. HEADER ===== */
+#main-header {
+    background: linear-gradient(90deg, #0077ff, #00c6ff);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* ===== 4. NAVIGATION ===== */
+nav a {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+/* Hover state */
+nav a:hover {
+    color: yellow;
+    text-decoration: underline;
+}
+
+/* Active link */
+nav a.active {
+    border-bottom: 2px solid white;
+}
+
+/* ===== 5. CONTAINER ===== */
+.container {
+    padding: 20px;
+}
+
+/* ===== 6. TABLE SKILLS ===== */
+.skill-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.skill-table th,
+.skill-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Header row */
+.skill-table th {
+    background-color: #333;
+    color: white;
+}
+
+/* Zebra striping */
+.skill-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover row */
+.skill-table tr:hover {
+    background-color: #dfefff;
+}
+
+/* ===== 7. FOOTER ===== */
+footer {
+    background-color: #222;
+    color: #bbb;
+    text-align: center;
+    padding: 15px;
+}
