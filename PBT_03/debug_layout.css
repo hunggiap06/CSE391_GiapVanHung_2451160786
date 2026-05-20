@@ -1,0 +1,55 @@
+/* --- Mã CSS dùng chung --- */
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+    background-color: #fff;
+    /* Clearfix đơn giản để container bao trọn các phần tử float */
+    overflow: hidden; 
+}
+
+/* --- CÁCH 1: Sử dụng border-box --- */
+.fix-1.sidebar {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    float: left;
+    box-sizing: border-box; /* Giải pháp Cách 1 */
+    background-color: #e3f2fd;
+}
+
+.fix-1.content {
+    width: 660px;
+    padding: 30px;
+    border: 1px solid #ccc;
+    float: left;
+    box-sizing: border-box; /* Giải pháp Cách 1 */
+    background-color: #fff9c4;
+}
+
+/* --- CÁCH 2: Không dùng border-box (Trừ hao width) --- */
+.fix-2.sidebar {
+    width: 258px; /* Đã trừ 40px padding và 2px border */
+    padding: 20px;
+    border: 1px solid #ccc;
+    float: left;
+    background-color: #e8f5e9;
+}
+
+.fix-2.content {
+    width: 598px; /* Đã trừ 60px padding và 2px border */
+    padding: 30px;
+    border: 1px solid #ccc;
+    float: left;
+    background-color: #ffe0b2;
+}

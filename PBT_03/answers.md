@@ -311,3 +311,83 @@ Tổng chiều rộng:
 
 Vì selector:
 
+# Phần C
+## Câu C1
+### 1. Tính chiều rộng thực tế (Box Model: content-box)
+
+Theo mặc định, trình duyệt sử dụng `box-sizing: content-box`. Nghĩa là tổng chiều rộng thực tế (Actual Width) của một phần tử được tính bằng:
+
+> **Actual Width = width + padding (trái + phải) + border (trái + phải)**
+
+**Sidebar:**
+* `width`: 300px
+* `padding`: 20px x 2 = 40px
+* `border`: 1px x 2 = 2px
+* **Tổng chiều rộng Sidebar:** 300 + 40 + 2 = **342px**
+
+**Content:**
+* `width`: 660px
+* `padding`: 30px x 2 = 60px
+* `border`: 1px x 2 = 2px
+* **Tổng chiều rộng Content:** 660 + 60 + 2 = **722px**
+
+---
+
+### 2. Giải thích tại sao layout bị vỡ
+
+Layout bị vỡ (content bị đẩy xuống dòng mới) là do **tổng chiều rộng thực tế của Sidebar và Content lớn hơn chiều rộng của Container**.
+
+* Tổng chiều rộng thực tế của cả 2 khối là: 342px (Sidebar) + 722px (Content) = **1064px**
+* Trong khi đó, `.container` đã bị fix cứng `width: 960px`.
+* Vì **1064px > 960px**, không gian của container không đủ để chứa 2 thẻ `float: left` nằm ngang hàng. Trình duyệt tự động đẩy thẻ thứ hai (`.content`) xuống dòng dưới để có đủ không gian hiển thị.
+
+---
+
+### 3. Hai cách sửa lỗi (Fix Layout)
+
+#### Cách 1: Sử dụng `box-sizing: border-box`
+Thuộc tính này ép trình duyệt tính cả `padding` và `border` vào trong `width` đã khai báo.
+
+* Khi thêm `box-sizing: border-box;` cho cả sidebar và content, chiều rộng thực tế của chúng sẽ giữ nguyên đúng bằng 300px và 660px.
+* Tổng kích thước hiển thị sẽ là: 300px + 660px = **960px** (vừa khít với container).
+
+#### Cách 2: Không dùng border-box (Tính toán lại `width`)
+Vẫn giữ nguyên `content-box` mặc định, nhưng ta phải trừ đi kích thước của `padding` và `border` ở thuộc tính `width` để tổng kích thước không vượt quá 960px.
+
+* **Sidebar mới:** 300px (mục tiêu) - 40px (padding) - 2px (border) = `width: 258px;`
+* **Content mới:** 660px (mục tiêu) - 60px (padding) - 2px (border) = `width: 598px;`
+## Câu C2
+### Phân tích và Giải đáp kết quả
+
+#### 1. "Sản phẩm A" (h2)
+* **font-size:** `20px`
+* **color:** `green`
+* **Giải thích:**
+  * **Font-size:** Thẻ `h2` này chịu tác động của rule `.card .title { font-size: 20px; }`. Dù nó là thẻ con của `.container` (14px) và `body` (16px), nhưng rule định nghĩa trực tiếp vào class `.title` sẽ ghi đè các giá trị kế thừa.
+  * **Color:** Thẻ này khớp với 2 rule là `#featured .title { color: red; }` và `.highlight { color: green !important; }`. Theo quy tắc Cascade, Id (`#featured`) có độ ưu tiên (độ đặc hiệu - specificity) cao hơn class thông thường, LẼ RA màu sẽ là `red`. Tuy nhiên, thẻ này có class `.highlight` chứa từ khóa `!important`. Từ khóa này phá vỡ mọi quy tắc ưu tiên thông thường và luôn giành chiến thắng. Do đó, màu là `green`.
+
+---
+
+#### 2. "Mô tả sản phẩm" (p trong card featured)
+* **color:** `blue`
+* **Giải thích:**
+  * Thẻ `p` này khớp với rule `.card p { color: inherit; }`. Giá trị `inherit` báo cho trình duyệt biết hãy lấy màu sắc từ phần tử cha trực tiếp của nó.
+  * Phần tử cha trực tiếp của thẻ `p` này là `<div class="card" id="featured">`. Thẻ `div` này chịu tác động của rule `.card { color: blue; }`.
+  * Do đó, thẻ `p` kế thừa màu `blue` từ thẻ cha.
+
+---
+
+#### 3. "Sản phẩm B" (h2)
+* **font-size:** `20px`
+* **color:** `blue`
+* **Giải thích:**
+  * **Font-size:** Tương tự như Sản phẩm A, nó khớp với rule `.card .title { font-size: 20px; }`.
+  * **Color:** Thẻ này không có rule CSS nào quy định màu sắc trực tiếp (không có id `#featured`, không có class `.highlight`). Theo quy tắc inheritance mặc định của thuộc tính `color`, nó sẽ lấy màu từ thẻ cha. Thẻ cha là `.card` có màu `blue`, nên nó có màu `blue`.
+
+---
+
+#### 4. "Mô tả sản phẩm B" (p.highlight)
+* **color:** `green`
+* **Giải thích:**
+  * Thẻ này khớp với 2 rule: `.card p { color: inherit; }` và `.highlight { color: green !important; }`.
+  * Mặc dù `.card p` quy định thẻ phải kế thừa màu từ cha (cha là `.card` màu `blue`), nhưng rule `.highlight` có chứa từ khóa `!important` nên nó áp đảo toàn bộ. Kết quả là màu `green`.
