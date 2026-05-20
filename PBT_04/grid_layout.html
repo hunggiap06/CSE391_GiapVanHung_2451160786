@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid E-Commerce Layout</title>
+    <link rel="stylesheet" href="grid.css">
+</head>
+<body>
+
+    <div class="page-container">
+        
+        <header class="header">
+            <div class="header-logo">E-SHOP GRID</div>
+            <nav class="header-nav">
+                <a href="#">Trang chủ</a>
+                <a href="#">Sản phẩm</a>
+                <a href="#">Liên hệ</a>
+            </nav>
+            <div class="header-cart">Giỏ hàng (0)</div>
+        </header>
+
+        <section class="hero-banner">
+            <div class="hero-content">
+                <h1>MÙA SALEOFF LỚN NHẤT NĂM</h1>
+                <p>Giảm giá lên đến 50% cho tất cả các sản phẩm công nghệ mới nhất.</p>
+                <button class="btn-shop-now">Khám phá ngay</button>
+            </div>
+            
+            <div class="featured-card">
+                <div class="tag-hot">HOT DEAL</div>
+                <h3>Siêu Phẩm Nổi Bật 2026</h3>
+                <p class="featured-desc">Mẫu thiết kế cao cấp tích hợp AI thế hệ mới.</p>
+                <span class="price">24.990.000 đ</span>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <h3 class="sidebar-title">Bộ lọc tìm kiếm</h3>
+            
+            <div class="filter-group">
+                <h4>Danh mục</h4>
+                <label><input type="checkbox" checked> Điện thoại</label>
+                <label><input type="checkbox"> Laptop</label>
+                <label><input type="checkbox"> Máy tính bảng</label>
+                <label><input type="checkbox"> Phụ kiện</label>
+            </div>
+
+            <div class="filter-group">
+                <h4>Khoảng giá</h4>
+                <label><input type="checkbox"> Dưới 5 triệu</label>
+                <label><input type="checkbox"> Từ 5 - 15 triệu</label>
+                <label><input type="checkbox"> Trên 15 triệu</label>
+            </div>
+            
+            <div class="filter-group">
+                <h4>Thương hiệu</h4>
+                <label><input type="checkbox"> Apple</label>
+                <label><input type="checkbox"> Samsung</label>
+                <label><input type="checkbox"> ASUS</label>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h2 class="main-title">Tất cả sản phẩm</h2>
+            
+            <div class="products-subgrid">
+                <div class="product-item">
+                    <div class="img-placeholder">Sản phẩm 1</div>
+                    <h4>Điện thoại thông minh A1</h4>
+                    <p class="price">4.500.000 đ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+
+                <div class="product-item">
+                    <div class="img-placeholder">Sản phẩm 2</div>
+                    <h4>Laptop Văn Phòng Siêu Mỏng</h4>
+                    <p class="price">16.890.000 đ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+
+                <div class="product-item">
+                    <div class="img-placeholder">Sản phẩm 3</div>
+                    <h4>Tai nghe chống ồn Pro</h4>
+                    <p class="price">2.300.000 đ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+
+                <div class="product-item">
+                    <div class="img-placeholder">Sản phẩm 4</div>
+                    <h4>Đồng hồ thể thao thông minh</h4>
+                    <p class="price">3.200.000 đ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+
+                <div class="product-item">
+                    <div class="img-placeholder">Sản phẩm 5</div>
+                    <h4>Máy tính bảng giải trí 10 inch</h4>
+                    <p class="price">7.990.000 đ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+
+                <div class="product-item">
+                    <div class="img-placeholder">Sản phẩm 6</div>
+                    <h4>Củ sạc nhanh đa năng 65W</h4>
+                    <p class="price">650.000 đ</p>
+                    <button class="btn-add">Thêm vào giỏ</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="ads-aside">
+            <div class="ads-banner">
+                <span class="ads-badge">QUẢNG CÁO</span>
+                <h4>Khuyến mãi Phụ Kiện</h4>
+                <p>Mua 1 tặng 1 trong tuần này!</p>
+                <div class="ads-image-placeholder">Banner Image</div>
+            </div>
+            
+            <div class="ads-banner gift-theme">
+                <h4>Quà tặng sinh nhật</h4>
+                <p>Nhận ngay Voucher 500k</p>
+                <div class="ads-image-placeholder">Voucher Image</div>
+            </div>
+        </aside>
+
+        <footer class="footer">
+            <p>&copy; 2026 E-Shop Grid Layout Dự Án Học Tập. All rights reserved.</p>
+        </section>
+
+    </div>
+
+</body>
+</html>

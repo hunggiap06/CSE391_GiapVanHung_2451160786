@@ -1,0 +1,210 @@
+/* Khởi tạo cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fcfcfc;
+    color: #333;
+}
+
+/* ==========================================================================
+   CẤU TRÚC LAYOUT CHÍNH (ÁP DỤNG CSS GRID NÂNG CAO)
+   ========================================================================== */
+.page-container {
+    display: grid;
+    /* Cấu trúc 3 cột theo yêu cầu: Sidebar (200px) - Main (co giãn tự do) - Ads (200px) */
+    grid-template-columns: 200px minmax(500px, 1fr) 200px;
+    
+    /* Thiết lập khoảng cách gap giữa các vùng */
+    gap: 20px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    /* Điểm thưởng nâng cao: Định nghĩa cấu trúc Layout bằng đặt tên Area */
+    grid-template-areas: 
+        "header  header  header"
+        "hero    hero    hero"
+        "sidebar main    ads"
+        "footer  footer  footer";
+}
+
+/* Định danh các khu vực vào các vùng Grid Area tương ứng */
+.header      { grid-area: header; }
+.hero-banner { grid-area: hero; }
+.sidebar     { grid-area: sidebar; }
+.main-content{ grid-area: main; }
+.ads-aside   { grid-area: ads; }
+.footer      { grid-area: footer; }
+
+/* Cách viết dự phòng / Thể hiện đúng kỹ thuật yêu cầu mở rộng (span full width) */
+.header, .hero-banner, .footer {
+    grid-column: 1 / -1; /* Đảm bảo trải dài toàn bộ từ cột đầu đến cột cuối */
+}
+
+/* ==========================================================================
+   CHI TIẾT THÀNH PHẦN (STYLING)
+   ========================================================================== */
+
+/* 1. Header */
+.header {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-logo { font-size: 22px; font-weight: bold; color: #00adb5; }
+.header-nav a { color: #eee; text-decoration: none; margin: 0 15px; font-weight: 500; }
+.header-nav a:hover { color: #00adb5; }
+
+/* 2. Hero Banner (Có lồng lưới grid con để xử lý điểm bonus) */
+.hero-banner {
+    background: linear-gradient(135deg, #3a6073, #3a7bd5);
+    color: white;
+    padding: 40px;
+    border-radius: 8px;
+    
+    /* Tạo lưới Grid con bên trong Hero Banner */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 20px;
+    align-items: center;
+}
+.hero-content {
+    grid-column: span 1; /* Chiếm 1 phần bên trái */
+}
+.hero-content h1 { font-size: 32px; margin-bottom: 10px; line-height: 1.2; }
+.hero-content p { margin-bottom: 20px; opacity: 0.9; }
+.btn-shop-now {
+    background-color: #ffb400;
+    color: #1a1a1a;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Nâng cao (Bonus 5đ): Card sản phẩm nổi bật lấn chiếm 2 cột (span 2) */
+.featured-card {
+    grid-column: span 2; /* Chiếm 2 cột còn lại của Grid Hero */
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 25px;
+    border-radius: 8px;
+    color: white;
+    position: relative;
+}
+.tag-hot {
+    position: absolute; top: 15px; right: 15px;
+    background-color: #ff4757; padding: 4px 10px;
+    font-size: 11px; font-weight: bold; border-radius: 20px;
+}
+.featured-card h3 { font-size: 24px; margin-bottom: 10px; color: #ffb400; }
+.featured-card .price { font-size: 22px; font-weight: bold; display: block; margin-top: 15px; }
+
+/* 3. Sidebar (Filters) */
+.sidebar {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #eef2f3;
+}
+.sidebar-title { font-size: 18px; margin-bottom: 20px; color: #222; padding-bottom: 8px; border-bottom: 2px solid #3a7bd5; }
+.filter-group { margin-bottom: 25px; }
+.filter-group h4 { font-size: 14px; margin-bottom: 10px; color: #666; text-transform: uppercase; }
+.filter-group label { display: block; margin-bottom: 8px; font-size: 14px; cursor: pointer; }
+.filter-group input { margin-right: 8px; }
+
+/* 4. Main Content & Subgrid 3 cột sản phẩm */
+.main-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #eef2f3;
+}
+.main-title { font-size: 22px; margin-bottom: 20px; }
+
+/* Subgrid chứa tối thiểu 6 thẻ sản phẩm sắp xếp thành các hàng 3 cột */
+.products-subgrid {
+    display: grid;
+    /* Dùng minmax kết hợp repeat để tự động co giãn 3 cột cân đối linh hoạt */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+.product-item {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 15px;
+    text-align: center;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+.product-item:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transform: translateY(-3px);
+}
+.img-placeholder {
+    height: 140px;
+    background-color: #f1f2f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a4b0be;
+    font-weight: 500;
+    margin-bottom: 12px;
+    border-radius: 4px;
+}
+.product-item h4 { font-size: 15px; margin-bottom: 8px; color: #333; height: 40px; overflow: hidden; }
+.product-item .price { color: #ff4757; font-weight: bold; margin-bottom: 12px; }
+.btn-add {
+    width: 100%; background-color: #3a7bd5; color: white;
+    border: none; padding: 8px; border-radius: 4px; cursor: pointer; font-weight: 500;
+}
+.btn-add:hover { background-color: #2a66b8; }
+
+/* 5. Ads Aside (Quảng cáo bên phải) */
+.ads-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.ads-banner {
+    background-color: #fffbeb;
+    border: 1px dashed #f59e0b;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    text-align: center;
+}
+.gift-theme { background-color: #eef2ff; border-color: #4f46e5; }
+.ads-badge {
+    font-size: 9px; background-color: #f59e0b; color: white;
+    padding: 2px 6px; border-radius: 3px; position: absolute; top: 10px; right: 10px;
+}
+.ads-banner h4 { margin: 15px 0 5px 0; color: #b45309; }
+.gift-theme h4 { color: #4338ca; }
+.ads-banner p { font-size: 13px; color: #6b7280; margin-bottom: 15px; }
+.ads-image-placeholder {
+    background-color: rgba(0,0,0,0.05);
+    height: 100px; display: flex; align-items: center;
+    justify-content: center; border-radius: 4px; color: #9ca3af; font-size: 12px;
+}
+
+/* 6. Footer */
+.footer {
+    background-color: #2f3542;
+    color: #a4b0be;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 14px;
+}

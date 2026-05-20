@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Positioning Playground</title>
+    <!-- Liên kết tới file CSS -->
+    <link rel="stylesheet" href="positionting.css">
+</head>
+<body>
+
+    <!-- Header: Cố định ở trên cùng (Fixed) -->
+    <header class="main-header">
+        <div class="logo">MyLogo</div>
+        <nav class="navigation">
+            <a href="#">Trang chủ</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+    </header>
+
+    <!-- Container chính để chia cột -->
+    <div class="container">
+        
+        <!-- Sidebar: Dính khi cuộn trang (Sticky) -->
+        <aside class="sidebar">
+            <h3>Danh mục</h3>
+            <ul>
+                <li><a href="#">Điện thoại</a></li>
+                <li><a href="#">Laptop</a></li>
+                <li><a href="#">Phụ kiện</a></li>
+                <li><a href="#">Hàng cũ giá rẻ</a></li>
+            </ul>
+        </aside>
+
+        <!-- Vùng nội dung chính chứa các Card sản phẩm -->
+        <main class="main-content">
+            <h2>Sản phẩm nổi bật</h2>
+            
+            <div class="product-grid">
+                <!-- Card sản phẩm có Badge HOT (Relative & Absolute) -->
+                <div class="product-card">
+                    <span class="badge-hot">HOT</span>
+                    <div class="product-image">Ảnh Sản Phẩm</div>
+                    <div class="product-info">
+                        <h4>iPhone 15 Pro Max</h4>
+                        <p class="price">29.990.000 đ</p>
+                    </div>
+                </div>
+
+                <!-- Thêm một vài card khác để tạo không gian cuộn trang -->
+                <div class="product-card">
+                    <div class="product-image">Ảnh Sản Phẩm</div>
+                    <div class="product-info">
+                        <h4>Samsung Galaxy S24</h4>
+                        <p class="price">22.990.000 đ</p>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="badge-hot">HOT</span>
+                    <div class="product-image">Ảnh Sản Phẩm</div>
+                    <div class="product-info">
+                        <h4>MacBook Air M3</h4>
+                        <p class="price">27.990.000 đ</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Đoạn văn bản giả để trang web đủ dài, giúp thử nghiệm hiệu ứng cuộn (Scroll) -->
+            <div class="scroll-helper">
+                <p>... Cuộn xuống nữa để kiểm tra tính năng Fixed của Header và Sticky của Sidebar ...</p>
+                <p>(Nội dung dài để tạo thanh cuộn cho trình duyệt)</p>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Nút quay lại đầu trang: Cố định góc dưới (Fixed) -->
+    <a href="#" class="scroll-to-top" title="Cuộn lên đầu trang">↑</a>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+/* Reset CSS cơ bản giúp tính toán kích thước chuẩn xác hơn */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+/* ==========================================
+   PHẦN 1: NAVBAR (10 ĐIỂM)
+   ========================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Đẩy 3 khối: Logo, Menu, Auth ra 3 góc/giữa */
+    align-items: center;             /* Căn giữa hoàn hảo theo chiều dọc */
+    background-color: #333;
+    padding: 15px 30px;
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+/* Logo */
+.logo a {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Menu items nằm giữa */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px; /* Cách đều các items trong menu */
+}
+
+/* Hiệu ứng hover cho menu items */
+.nav-links a:hover {
+    color: #ff9900;
+    text-decoration: underline;
+}
+
+/* Nút đăng nhập / đăng ký */
+.nav-auth {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-login:hover, .btn-register:hover {
+    color: #ff9900;
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   PHẦN 2: PRODUCT CARDS GRID (10 ĐIỂM)
+   ========================================== */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 15px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Lưới bọc sản phẩm */
+.products-grid {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép rớt hàng khi hết chỗ */
+    gap: 20px;       /* Khoảng cách giữa các card */
+}
+
+/* Thiết lập từng Card */
+.product-card {
+    /* 4 cột: mỗi cột chiếm 25% trừ đi phần bù trừ khoảng cách gap */
+    flex: 0 0 calc(25% - 15px); 
+    
+    /* Bản thân card cũng là một flexbox theo chiều dọc */
+    display: flex;
+    flex-direction: column;
+    
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s; /* Tạo animation mượt mà */
+}
+
+/* Hiệu ứng hover Card */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Các thành phần bên trong Card */
+.product-img {
+    height: 180px;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.product-info {
+    margin-bottom: 15px;
+}
+
+.product-name {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.product-price {
+    font-size: 18px;
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+/* Nút Mua - Luôn dính đáy card */
+.btn-buy {
+    margin-top: auto; /* Thuộc tính cốt lõi để đẩy nút xuống sát đáy bất kể điền nhiều chữ ở trên */
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.btn-buy:hover {
+    background-color: #e68a00;
+}
