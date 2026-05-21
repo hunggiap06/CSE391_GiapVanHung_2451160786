@@ -384,3 +384,33 @@ sass style.scss style.css
 - File `style.css`
 
 Trình duyệt sẽ đọc file `.css`.
+# Phần C
+# BÁO CÁO PHÂN TÍCH RESPONSIVE TRANG WEB THỰC (C1 - 10đ)
+
+**Đối tượng phân tích:** Shopee.vn
+
+---
+
+## 1. Hình ảnh minh họa (Screenshots)
+
+
+
+## 2. Bảng phân tích chi tiết
+
+| Đặc điểm | Mobile (375px) | Tablet (768px) | Desktop (1440px) |
+| :--- | :--- | :--- | :--- |
+| **Navigation** | Sử dụng **Bottom Navigation** (thanh điều hướng dưới cùng) và biểu tượng Chat/Giỏ hàng tối giản ở phía trên. | Thanh tìm kiếm được mở rộng hơn, menu điều hướng phía trên thu gọn lại để tiết kiệm không gian. | Thanh **Top-bar đầy đủ**: Hiển thị Kênh người bán, Kết nối, Tải ứng dụng, Thông báo, Giỏ hàng, Tài khoản. |
+| **Lưới Content** | Chia làm **2 cột** sản phẩm để tối ưu diện tích hiển thị theo chiều dọc của điện thoại. | Tăng lên thành **3 đến 4 cột** sản phẩm tùy theo danh mục và độ rộng màn hình. | Hiển thị đầy đủ từ **5 đến 6 cột** sản phẩm trên một hàng ngang. |
+| **Phần tử bị ẩn** | Các banner phụ bên cánh, danh sách gợi ý dài và phần chân trang (footer) chi tiết bị ẩn hoặc gom vào menu rút gọn. | Các mục lọc sản phẩm (Sidebar Filter) bên trái thường bị ẩn và thay thế bằng nút bấm "Bộ lọc". | **Hiển thị tất cả**: Bộ lọc bên trái cố định, banner sidebar hai bên, chân trang hiển thị đầy đủ 5 cột thông tin. |
+| **Font Size** | Giảm nhẹ (thường từ **12px - 13px**) để tránh tràn dòng và phù hợp với khoảng cách nhìn gần. | Kích thước trung bình (khoảng **14px**). | Kích thước chuẩn (**14px - 16px**) giúp đọc nội dung rõ ràng trên màn hình lớn. |
+
+---
+
+## 3. Phân tích Media Queries (DevTools)
+
+Dưới đây là các quy tắc Media Queries quan trọng mà trang web sử dụng để thay đổi giao diện:
+
+*   **@media (max-width: 767px):** Được dùng để định nghĩa giao diện Mobile. Tại đây, Shopee ẩn thanh Sidebar điều hướng và chuyển lưới sản phẩm về dạng 2 cột (`width: 50%`).
+*   **@media (min-width: 1200px):** Được dùng cho màn hình Desktop. Shopee thiết lập độ rộng cố định cho container chính (khoảng 1200px) và căn giữa bằng `margin: 0 auto` để nội dung không bị trải quá rộng.
+
+>
