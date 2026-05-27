@@ -9,8 +9,13 @@
 <body>
     <div class="container">
         <h2>Hệ thống Quản lý Sinh viên (K66 - BTTH03)</h2>
+        <div class="statistics-box">
+            <div class="stat-item">Tổng số sinh viên: <span id="total-students">0</span></div>
+            <div class="stat-item">Điểm trung bình lớp: <span id="average-score">0.0</span></div>
+        </div>
         <div class="action-bar">
             <button id="btn-open-form" class="btn btn-primary">+ Thêm sinh viên mới</button>
+            <div id="toast-msg" class="toast-hidden"></div>
         </div>
         <table class="student-table">
             <thead>

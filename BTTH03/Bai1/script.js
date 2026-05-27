@@ -17,7 +17,21 @@ const inputDob = document.getElementById('student-dob');
 const inputClass = document.getElementById('student-class');
 const inputGpa = document.getElementById('student-gpa');
 const inputEmail = document.getElementById('student-email');
+function showToast(message) {
+    toastMsg.innerText = message;
+    toastMsg.className = "toast-success";
+    setTimeout(() => { toastMsg.className = "toast-hidden"; }, 2500);
+}
 
+function updateStatistics() {
+    totalStudentsEl.innerText = students.length;
+    if (students.length === 0) {
+        averageScoreEl.innerText = "0.0";
+        return;
+    }
+    const totalScore = students.reduce((sum, s) => sum + parseFloat(s.gpa), 0);
+    averageScoreEl.innerText = (totalScore / students.length).toFixed(2);
+}
 function renderTable() {
     studentList.innerHTML = '';
     students.forEach(student => {
@@ -90,9 +104,13 @@ studentList.addEventListener('click', (e) => {
     }
     if (e.target.classList.contains('btn-delete')) {
         const id = e.target.getAttribute('data-id');
-        students = students.filter(s => s.id !== id);
-        localStorage.setItem('students', JSON.stringify(students));
-        renderTable();
+        if (confirm(`Bạn có chắc chắn muốn xóa SV mã ${id}?`)) {
+            students = students.filter(s => s.id !== id);
+            localStorage.setItem('students', JSON.stringify(students));
+            renderTable();
+            showToast("Đã xóa sinh viên.");
+        }
+
     }
 });
 

@@ -28,3 +28,7 @@ body { font-family: Arial, sans-serif; background-color: #f3f4f6; padding: 20px;
 .form-group label { display: block; margin-bottom: 4px; }
 .form-group input { width: 100%; padding: 6px; box-sizing: border-box; }
 .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px; }
+
+#toast-msg { padding: 6px 12px; border-radius: 4px; font-size: 14px; transition: all 0.3s; }
+.toast-success { background-color: #dcfce7; color: #15803d; }
+.toast-hidden { opacity: 0; }
