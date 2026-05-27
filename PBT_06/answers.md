@@ -88,3 +88,24 @@ Cả 3 class này đều dùng để bao bọc và căn giữa nội dung, nhưn
 | **Kích thước `≥ 768px`** | Chiều rộng cố định (Ví dụ: `720px`). | Chiều rộng chiếm `100%`. | Chiều rộng bắt đầu cố định (Ví dụ: `720px`). |
 | **Kích thước `≥ 1200px`** | Chiều rộng cố định (Ví dụ: `1140px`). | Chiều rộng chiếm `100%`. | Chiều rộng cố định (Ví dụ: `1140px`). |
 | **Mục đích sử dụng** | Khi muốn nội dung hiển thị gom gọn gàng ở giữa màn hình lớn, tạo không gian trống 2 bên lề. | Khi làm các giao diện tràn màn hình (như bản đồ, thanh điều hướng navbar, banner lớn,...). | Khi muốn nội dung hiển thị tràn viền trên điện thoại để tiết kiệm không gian, nhưng vẫn gom gọn lại khi sang máy tính bảng/máy tính. |
+
+# Phần C
+### 2. Bảng so sánh chi tiết
+
+| Tiêu chí | Viết bằng CSS Thuần | Sử dụng Bootstrap |
+| :--- | :--- | :--- |
+| **Số dòng CSS cần viết** | Rất nhiều. Phải tự tay viết từ layout, các trạng thái tương tác (hover, focus, active) cho đến các đoạn mã Media Queries để xử lý responsive. | Gần như bằng 0. Bạn chỉ cần gọi đúng tên các class tiện ích có sẵn như `card`, `d-flex`, `navbar-expand-lg`, `col-md-6` thẳng vào cấu trúc thẻ HTML. |
+| **Thời gian phát triển** | Chậm. Lập trình viên phải tự tính toán khoảng cách (padding/margin), thiết kế hệ thống lưới và kiểm thử kỹ lưỡng sự vỡ khung hình trên nhiều kích thước màn hình. | Rất nhanh chóng. Nhờ hệ thống grid thông minh và các component được chuẩn hóa sẵn, bạn có thể hoàn thành giao diện một trang Dashboard hay Landing Page chỉ trong vài giờ. |
+| **Khả năng tùy biến** | Tối đa (100%). Bạn có toàn quyền kiểm soát chi tiết đến từng pixel theo đúng ý đồ thiết kế mà không bị ràng buộc bởi bất kỳ quy tắc nào có sẵn. | Bị hạn chế hơn. Giao diện dễ bị "đại trà" nếu không custom sâu. Việc ép Bootstrap chạy theo một layout phá cách độc lạ đôi khi mất nhiều công sức hơn tự viết. |
+
+### 3. Khi nào NÊN và KHÔNG NÊN dùng Bootstrap?
+
+**NÊN dùng Bootstrap khi:**
+* Cần xây dựng cực nhanh các sản phẩm mẫu (Prototype) hoặc các dự án khởi nghiệp tinh gọn (MVP) để kiểm thử thị trường.
+* Phát triển các dự án thiên về quản trị hệ thống như Admin Dashboard, trang quản lý nội bộ – nơi cấu trúc rõ ràng, chuẩn chỉnh quan trọng hơn sự độc bản về giao diện.
+* Làm việc trong các đội ngũ thiếu nhân sự chuyên trách về UI/UX, cần một bộ khung giao diện chuẩn để tất cả lập trình viên đều có thể phối hợp làm việc đồng bộ.
+
+**KHÔNG NÊN dùng Bootstrap khi:**
+* Dự án có bản thiết kế UI/UX độc quyền sáng tạo, mang tính nghệ thuật cao và không tuân theo hệ thống lưới 12 cột thông thường.
+* Các ứng dụng cần tối ưu hóa dung lượng và tốc độ tải trang ở mức tuyệt đối, vì Bootstrap chứa sẵn rất nhiều file CSS/JS nền mà dự án có thể không dùng hết.
+* Khi doanh nghiệp muốn tự xây dựng một hệ thống ngôn ngữ thiết kế (Design System) hoàn toàn riêng biệt để khẳng định bản sắc thương hiệu sâu sắc.
